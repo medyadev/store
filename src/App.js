@@ -3,7 +3,6 @@ import Catalog from "./components/Catalog";
 import Favorites from "./components/Favorites";
 import Basket from "./components/Basket";
 import Home from "./components/Home";
-import "./style/style.scss";
 
 function App() {
 
