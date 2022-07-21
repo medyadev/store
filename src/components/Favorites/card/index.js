@@ -1,10 +1,18 @@
 import React from 'react';
-import AddedToCart from "../../ui/AddedToCart";
 import AddToCart from "../../ui/addToCart";
-import AddToFavorite from "../../ui/AddToFavorite";
-import { FaTimesCircle} from "react-icons/fa";
+import {useDispatch, useSelector} from "react-redux";
+import DeleteFromFavorite from "../../ui/DeleteFromFavorite";
+import {DELETE_FROM_FAVORITE} from "../../../redux/actionTypes";
 
-const Cart = ({product}) => {
+const Cart = ({product,addToBasket}) => {
+    const dispatch = useDispatch()
+    const {basket} = useSelector(s => s)
+    let isAdded= basket.some(el => el.id === product.id)
+
+
+    const deleteFromFav = (id) => {
+        dispatch({type:DELETE_FROM_FAVORITE,payload:id})
+    }
 
     return (
         <div className='basis-1/4 '>
@@ -16,19 +24,15 @@ const Cart = ({product}) => {
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{product.price}</p>
                     <div className='flex items-center'>
                       <span>
-                      {/*      {*/}
-                      {/*          isAdded ? <AddedToCart/>:<AddToCart product={product} addToBasket={addToBasket}/>*/}
 
-                      {/*      }*/}
+                               <AddToCart product={product} addToBasket={addToBasket}/>
+
                       </span>
 
 
 
 
-                        <span>
-                          {/*<AddToFavorite addToFavorite={addToFavorite} product={product}/>*/}
-                            <FaTimesCircle/>
-                      </span>
+                     <DeleteFromFavorite deleteCard={deleteFromFav} product={product}/>
 
                     </div>
                 </div>

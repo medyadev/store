@@ -1,0 +1,27 @@
+#header {
+  background: rgba(0, 0, 0, 0.74);
+
+  .header__content {
+
+    &__block {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    &__menu {
+      padding: 10px;
+
+      &__link {
+        margin: 70px;
+        padding: 10px;
+
+      }
+    }
+  }
+}
+
+.active {
+  padding: 5px;
+  color: white;
+}
+
